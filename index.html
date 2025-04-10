@@ -55,6 +55,20 @@
       margin: 20px auto;
       display: block;
     }
+    .thanks {
+      display: none;
+      font-size: 18px;
+      background: #d4edda;
+      color: #155724;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 8px;
+    }
+    a.download-link {
+      color: #007BFF;
+      font-weight: bold;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -62,23 +76,40 @@
     <img src="capa-do-ebook.png" alt="Capa do Mini Guia" class="cover" />
     <h1>Mini Guia de Persuasão</h1>
     <p>Aprenda a cativar, atrair e influenciar com verdade em qualquer área da vida.</p>
-<!-- Formulário com redirecionamento personalizado -->
-<form action="https://formsubmit.co/varleysr@gmail.com" method="POST">
+<form id="formulario">
     <input type="text" name="nome" placeholder="Seu nome" required><br>
     <input type="email" name="email" placeholder="Seu e-mail" required><br>
-
-    <input type="hidden" name="_subject" value="Novo Lead - Mini Guia de Persuasão">
-    <input type="hidden" name="_autoresponse"
-        value="Olá! Aqui está o seu Mini Guia de Persuasão: https://encurtador.com.br/ZwSWP. Aproveite a leitura! ✨">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://varleys.github.io/agradecimento.html">
 
       <button type="submit">Quero meu Mini Guia gratuito</button>
     </form>
 
-    <p style="margin-top: 20px; font-size: 14px; color: #666;">
-    Após preencher o formulário, você será redirecionado e também receberá um e-mail com seu Mini Guia.
-    </p>
+    <div class="thanks" id="mensagem-sucesso">
+        ✅ Obrigado por se inscrever!<br>
+        Você receberá um e-mail com o guia. <br><br>
+        Ou <a class="download-link" href="https://encurtador.com.br/ZwSWP" target="_blank">clique aqui para baixar
+            agora</a>.
+    </div>
   </div>
+<script>
+    const form = document.getElementById("formulario");
+    const sucesso = document.getElementById("mensagem-sucesso");
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const data = new FormData(form);
+        data.append("_captcha", "false");
+        data.append("_subject", "Novo Lead - Mini Guia de Persuasão");
+        data.append("_autoresponse", "Olá! Aqui está o seu Mini Guia de Persuasão: https://encurtador.com.br/ZwSWP. Aproveite a leitura! ✨");
+
+        await fetch("https://formsubmit.co/varleysr@gmail.com", {
+            method: "POST",
+            body: data
+        });
+
+        form.reset();
+        sucesso.style.display = "block";
+    });
+</script>
 </body>
 </html>
