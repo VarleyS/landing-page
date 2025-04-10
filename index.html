@@ -62,13 +62,21 @@
     <img src="capa-do-ebook.png" alt="Capa do Mini Guia" class="cover" />
     <h1>Mini Guia de Persuasão</h1>
     <p>Aprenda a cativar, atrair e influenciar com verdade em qualquer área da vida.</p>
-    <form>
-      <input type="text" name="nome" placeholder="Seu nome" required /> <br />
-      <input type="email" name="email" placeholder="Seu e-mail" required /> <br />
+<!-- Formulário integrado com FormSubmit -->
+<form action="https://formsubmit.co/varleysr@gmail.com" method="POST">
+    <input type="text" name="nome" placeholder="Seu nome" required><br>
+    <input type="email" name="email" placeholder="Seu e-mail" required><br>
+
+    <input type="hidden" name="_subject" value="Novo Lead - Mini Guia de Persuasão">
+    <input type="hidden" name="_autoresponse"
+        value="Olá! Aqui está o seu Mini Guia de Persuasão: https://encurtador.com.br/ZwSWP. Aproveite a leitura! ✨">
+    <input type="hidden" name="_captcha" value="false">
+
       <button type="submit">Quero meu Mini Guia gratuito</button>
     </form>
+
     <p style="margin-top: 20px; font-size: 14px; color: #666;">
-      Após se cadastrar, você receberá o acesso direto ao seu mini guia em PDF.
+    Após preencher o formulário, você receberá um e-mail com o link direto para baixar seu Mini Guia.
     </p>
   </div>
 </body>
